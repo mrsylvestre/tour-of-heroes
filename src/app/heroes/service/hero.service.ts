@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 
 import { Hero } from '../interfaces/hero';
 import { HEROES } from '../mock-heroes';
@@ -9,9 +10,10 @@ import { HEROES } from '../mock-heroes';
 })
 export class HeroService {
 
-  constructor() { }
+  constructor(private snackbarService: SnackbarService) { }
 
   getHeroes(): Observable<Hero[]> {
+    this.snackbarService.display('Fetched Heroes');
     return of(HEROES);
   }
 }

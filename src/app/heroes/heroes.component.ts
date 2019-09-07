@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { Hero } from './interfaces/hero';
-import { HeroService } from './services/hero.service';
+import { HeroService } from './service/hero.service';
 
 @Component({
   selector: 'app-heroes',
