@@ -1,17 +1,15 @@
 <section class="container">
   <div class="row">
 
-    <ul class="nav nav-pills nav-fill col-12 mb-4">
-      <ng-container *ngFor="let hero of heroes$ | async">
-        <li class="nav-item" (click)="onSelect(hero)">
-          <a class="nav-link"
-            [ngClass]="{'active text-white': selectedHero && selectedHero.id === hero.id }">
-            {{ hero.name }}
-          </a>
-        </li>
-      </ng-container>
-    </ul>
-
+    <section class="col-12 mb-4">
+      <nav mat-tab-nav-bar>
+        <span mat-tab-link *ngFor="let hero of heroes$ | async"
+          (click)="onSelect(hero)"
+          [active]="selectedHero && selectedHero.id == hero.id">
+          {{ hero.name }}
+        </span>
+      </nav>
+    </section>
 
     <section *ngIf="selectedHero" class="col-12">
       <app-hero-detail [hero]="selectedHero"></app-hero-detail>
