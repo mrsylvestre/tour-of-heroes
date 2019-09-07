@@ -1,15 +1,21 @@
-<section class="container pt-3">
+<section class="container">
   <div class="row">
-    <h1 class="col-sm-12 display-4 mb-5">Modern Heroes</h1>
-    <div class="col-sm-12 col-md-4">
-      <div class="card">
-        <p class="card-header">{{ hero.name }}</p>
-        <div class="card-body">
-          <div class="card-action">
-            <span>ID: {{ hero.id }}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
+
+    <ul class="nav nav-pills nav-fill col-12 mb-4">
+      <ng-container *ngFor="let hero of heroes">
+        <li class="nav-item" (click)="onSelect(hero)">
+          <a class="nav-link"
+            [ngClass]="{'active text-white': selectedHero && selectedHero.id === hero.id }">
+            {{ hero.name }}
+          </a>
+        </li>
+      </ng-container>
+    </ul>
+
+
+    <section *ngIf="selectedHero" class="col-12">
+      <app-hero-detail [hero]="selectedHero"></app-hero-detail>
+    </section>
+
+  </div>
 </section>

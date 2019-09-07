@@ -1,0 +1,10 @@
+:host {
+  .nav-link {
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover:not(.active) {
+      background-color: lightgrey;
+    }
+  }
+}
