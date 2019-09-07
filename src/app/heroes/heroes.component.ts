@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 import { Hero } from './interfaces/hero';
 import { HeroService } from './services/hero.service';
@@ -20,17 +21,23 @@ export class HeroesComponent implements OnInit {
     private heroService: HeroService
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getHeroes();
   }
 
-  private onSelect(hero: Hero) {
+  private onSelect(hero: Hero): void {
     this.selectedHero = hero;
     this.documentTitleService.setTitle(`Modern Heroes - ${hero.name}`);
   }
 
   private getHeroes(): void {
-    this.heroes$ = this.heroService.getHeroes();
+    this.heroes$ = this.heroService.getHeroes().pipe(
+      tap((heroes) => {
+        if (!this.selectedHero) {
+          this.selectedHero = heroes[0];
+        }
+      }
+    ));
   }
 
 }
