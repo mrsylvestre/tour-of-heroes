@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Observable } from 'rxjs';
 
 import { Hero } from './interfaces/hero';
-import { HEROES } from './mock-heroes';
+import { HeroService } from './services/hero.service';
 
 @Component({
   selector: 'app-heroes',
@@ -11,16 +12,25 @@ import { HEROES } from './mock-heroes';
 })
 export class HeroesComponent implements OnInit {
 
-  heroes: Hero[] = HEROES;
+  heroes$: Observable<Hero[]>;
   selectedHero: Hero;
 
-  constructor(private pageTitleService: Title) { }
+  constructor(
+    private documentTitleService: Title,
+    private heroService: HeroService
+  ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getHeroes();
+  }
 
   private onSelect(hero: Hero) {
     this.selectedHero = hero;
-    this.pageTitleService.setTitle(`Modern Heroes - ${hero.name}`);
+    this.documentTitleService.setTitle(`Modern Heroes - ${hero.name}`);
+  }
+
+  private getHeroes(): void {
+    this.heroes$ = this.heroService.getHeroes();
   }
 
 }

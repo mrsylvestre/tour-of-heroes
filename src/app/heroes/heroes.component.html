@@ -2,7 +2,7 @@
   <div class="row">
 
     <ul class="nav nav-pills nav-fill col-12 mb-4">
-      <ng-container *ngFor="let hero of heroes">
+      <ng-container *ngFor="let hero of heroes$ | async">
         <li class="nav-item" (click)="onSelect(hero)">
           <a class="nav-link"
             [ngClass]="{'active text-white': selectedHero && selectedHero.id === hero.id }">
