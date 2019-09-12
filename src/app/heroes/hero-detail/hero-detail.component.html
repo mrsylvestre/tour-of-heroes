@@ -1,4 +1,42 @@
-<div class="jumbotron">
-  <h1 class="display-5">{{ hero.name }}</h1>
-  <p class="lead">{{ hero.description }}</p>
+<div class="card">
+  <div class="card-body">
+
+    <h1 class="card-title">{{ hero.name }}</h1>
+    <p class="card-text">{{ hero.description }}</p>
+    <hr class="my-3">
+    <div class="row">
+      <div class="col-2">
+        <button
+          mat-stroked-button
+          class="d-flex align-items-center"
+          [ngClass]="{isOpen: editing}"
+          (click)="toggleEdit()">
+            <i *ngIf="!editing" class="far fa-edit mr-2"></i>
+            <i *ngIf="editing" class="far fa-check-circle mr-2 text-success"></i>
+            {{ editing ? "Done" : "Edit" }}
+        </button>
+      </div>
+      <div class="col-10 pt-4" *ngIf="editing">
+        <div class="row">
+          <mat-form-field class="col-12">
+            <input matInput
+              #heroNameInput
+              (keyup.enter)="changeHeroName(heroNameInput.value)"
+              (change)="changeHeroName(heroNameInput.value)"
+              [placeholder]="'Name'"
+              [value]="hero.name">
+          </mat-form-field>
+
+          <mat-form-field class="col-12">
+            <textarea matInput
+              cdkTextareaAutosize
+              cdkAutosizeMinRows="2"
+              [placeholder]="'Description'"
+              [(ngModel)]="hero.description">
+            </textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

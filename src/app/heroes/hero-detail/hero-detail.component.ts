@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 import { Hero } from '../interfaces/hero';
 
@@ -7,12 +7,24 @@ import { Hero } from '../interfaces/hero';
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.scss']
 })
-export class HeroDetailComponent implements OnInit {
+export class HeroDetailComponent implements OnChanges {
   @Input() hero: Hero;
+
+  public editing = false;
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnChanges(): void {
+    this.editing = false;
   }
 
+  changeHeroName(newName: string ) {
+    if (newName.trim().length > 0) {
+      this.hero.name = newName;
+    }
+  }
+
+  toggleEdit() {
+    return this.editing ? this.editing = false : this.editing = true;
+  }
 }

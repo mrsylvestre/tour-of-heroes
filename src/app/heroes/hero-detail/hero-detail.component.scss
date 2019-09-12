@@ -1,0 +1,13 @@
+:host {
+
+  button {
+    outline: none;
+    transition: 0.3s;
+    transition-property: transform, margin;
+    &.isOpen {
+      margin-top: 70%;
+      margin-left: 50%;
+      transform: translate(-50%, -75%);
+    }
+  }
+}

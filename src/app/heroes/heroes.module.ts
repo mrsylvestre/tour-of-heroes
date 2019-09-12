@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatTabsModule } from '@angular/material/tabs';
 
 import { HeroesRoutingModule } from '../routes/heroes-routing.module';
+import { AngularMaterialModule } from '../shared/angular-material/angular-material.module';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroesComponent } from './heroes.component';
 import { HeroService } from './service/hero.service';
@@ -13,8 +13,8 @@ import { HeroService } from './service/hero.service';
   imports: [
     CommonModule,
     FormsModule,
-    MatTabsModule,
-    HeroesRoutingModule
+    HeroesRoutingModule,
+    AngularMaterialModule
   ],
   declarations: [
     HeroesComponent,
