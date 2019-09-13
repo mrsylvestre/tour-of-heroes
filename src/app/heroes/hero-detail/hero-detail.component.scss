@@ -2,12 +2,9 @@
 
   button {
     outline: none;
-    transition: 0.3s;
-    transition-property: transform, margin;
+    transition: transform 0.3s ease-in-out;
     &.isOpen {
-      margin-top: 70%;
-      margin-left: 50%;
-      transform: translate(-50%, -75%);
+      transform: translate(30%, 60%);
     }
   }
 }
