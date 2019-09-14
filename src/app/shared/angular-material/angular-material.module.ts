@@ -1,7 +1,15 @@
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatInputModule, MatSnackBarModule, MatTableModule } from '@angular/material';
+import {
+  MatBadgeModule,
+  MatButtonModule,
+  MatChipsModule,
+  MatInputModule,
+  MatSnackBarModule,
+  MatTableModule,
+} from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 
@@ -12,8 +20,11 @@ import { MatTabsModule } from '@angular/material/tabs';
   ],
   exports: [
     MatTabsModule,
+    MatChipsModule,
+    MatBadgeModule,
     MatTableModule,
     MatCardModule,
+    MatDividerModule,
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,

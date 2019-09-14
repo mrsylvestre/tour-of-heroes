@@ -30,7 +30,7 @@ export class HeroesComponent implements OnInit {
   }
 
   routeTo(hero: Hero): void {
-    const link = ['/heroes', hero.name.toLowerCase()];
+    const link = ['/heroes', hero.id];
     this.router.navigate(link);
   }
 

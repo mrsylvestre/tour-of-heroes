@@ -9,7 +9,7 @@ const heroesRoutes: Routes = [
     path: 'heroes', component: HeroesComponent,
     // canActivate: [AuthGuard], // maybe put a guard in there for good mesure later
     children: [
-      { path: ':name', component: HeroesComponent },
+      { path: ':id', component: HeroesComponent },
     ]
   }
 ];

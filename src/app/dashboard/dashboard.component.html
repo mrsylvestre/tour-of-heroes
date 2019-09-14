@@ -1,20 +1,29 @@
 <section class="container">
-  <div class="row">
 
-    <mat-table [dataSource]="heroes$ | async" class="mat-elevation-z8 col-12">
+  <ng-container *ngIf="dataSource$ as dataSource">
+    <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8 col-12">
 
-      <ng-container *ngIf="heroes$ as heroes">
+      <ng-container *ngFor="let col of displayedColumns" matColumnDef="{{ col }}">
 
-        <ng-container *ngFor="let hero of heroes | keyvalue; index as i;" matColumnDef="{{ displayedColumns[i] }}">
-          <mat-header-cell mat-sort-header *matHeaderCellDef> {{ displayedColumns[i] }} </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{ element[displayedColumns[i]] }} </mat-cell>
-        </ng-container>
+        <!-- Will loop throught headers -->
+        <mat-header-cell mat-sort-header *matHeaderCellDef>
+          <div class="text-uppercase font-weight-bolder">
+            <span *ngIf="col === 'id' || col === 'name'">{{ col }}</span>
+            <span *ngIf="col === 'pv'" class="text-success">{{ col }}</span>
+            <span *ngIf="col === 'dmg'" class="text-danger">{{ col }}</span>
+            <span *ngIf="col === 'mana'" class="text-warning">{{ col }}</span>
+          </div>
+        </mat-header-cell>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <!-- contains the data foreach column -->
+        <mat-cell *matCellDef="let hero">{{ hero[col] }}</mat-cell>
 
       </ng-container>
 
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
     </mat-table>
-  </div>
+  </ng-container>
+
 </section>

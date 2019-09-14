@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, Scroll } from '@angular/router';
+import { debounceTime, tap } from 'rxjs/operators';
 
 import { AppService } from './app.service';
 
@@ -21,13 +22,14 @@ export class AppComponent implements OnInit {
   constructor(private appService: AppService, private router: Router) { }
 
   ngOnInit(): void {
-    // TODO: this subcription fires twice when naviguation to heroes,
-    this.router.events.subscribe((val: NavigationEnd) => {
-      if (val instanceof NavigationEnd) {
+    this.router.events.pipe(tap(), debounceTime(0)).subscribe((val: Scroll) => {
+      const evt = val.routerEvent;
+      if (evt instanceof NavigationEnd) {
         this.menuOptions.forEach(opt => {
-          if (val.url.includes(opt.displayName.toLowerCase())) {
+          const substring = opt.displayName.toLowerCase();
+          if (evt.url.includes(substring)) {
             this.selectedMenuOpt = opt;
-            console.log('menu option to set active', opt);
+            console.log(`Menu option = ${opt.displayName}`);
           }
         });
       }
