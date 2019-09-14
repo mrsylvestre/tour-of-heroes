@@ -7,11 +7,11 @@
 
         <!-- Will loop throught headers -->
         <mat-header-cell mat-sort-header *matHeaderCellDef>
-          <div class="text-uppercase font-weight-bolder">
-            <span *ngIf="col === 'id' || col === 'name'">{{ col }}</span>
-            <span *ngIf="col === 'pv'" class="text-success">{{ col }}</span>
-            <span *ngIf="col === 'dmg'" class="text-danger">{{ col }}</span>
-            <span *ngIf="col === 'mana'" class="text-warning">{{ col }}</span>
+          <div class="text-uppercase">
+            <i *ngIf="col === 'pv'" class="fas fa-heart text-danger mr-2"></i>
+            <i *ngIf="col === 'dmg'" class="fas fa-hammer text-dark mr-2"></i>
+            <i *ngIf="col === 'mana'" class="fas fa-bolt text-primary mr-2"></i>
+            {{ col }}
           </div>
         </mat-header-cell>
 

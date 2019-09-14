@@ -9,13 +9,12 @@
     <div class="col-12 display-4 p-3">
       <nav mat-tab-nav-bar>
         <ng-container *ngFor="let opt of menuOptions">
-          <div
+          <a
           (click)="setMenu(opt)"
-          mat-button
           mat-tab-link
           [active]="selectedMenuOpt && selectedMenuOpt.id === opt.id">
           {{ opt.displayName }}
-          </div>
+          </a>
         </ng-container>
       </nav>
     </div>

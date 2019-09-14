@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
           const substring = opt.displayName.toLowerCase();
           if (evt.url.includes(substring)) {
             this.selectedMenuOpt = opt;
-            console.log(`Menu option = ${opt.displayName}`);
+            this.setTitle(opt.displayName);
           }
         });
       }
