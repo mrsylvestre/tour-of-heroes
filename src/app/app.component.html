@@ -1,6 +1,24 @@
 <section class="container">
   <div class="row">
-    <h1 class="col-12 display-4 p-3">Modern Heroes</h1>
+    <h1
+    class="app-title"
+    (click)="setMenu(menuOptions[0])">
+    <i class="fab fa-artstation m-2"></i>
+    Modern Heroes
+    </h1>
+    <div class="col-12 display-4 p-3">
+      <nav mat-tab-nav-bar>
+        <ng-container *ngFor="let opt of menuOptions">
+          <div
+          (click)="setMenu(opt)"
+          mat-button
+          mat-tab-link
+          [active]="selectedMenuOpt && selectedMenuOpt.id === opt.id">
+          {{ opt.displayName }}
+          </div>
+        </ng-container>
+      </nav>
+    </div>
   </div>
 </section>
 <router-outlet></router-outlet>

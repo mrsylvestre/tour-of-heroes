@@ -12,8 +12,13 @@ export class HeroService {
 
   constructor(private snackbarService: SnackbarService) { }
 
+  getHero(id: number): Observable<Hero> {
+    // this.snackbarService.display(`Fetched ${HEROES[id].name}`);
+    return of(HEROES[id]);
+  }
+
   getHeroes(): Observable<Hero[]> {
-    this.snackbarService.display('Fetched Heroes');
+    // this.snackbarService.display('Fetched Heroes');
     return of(HEROES);
   }
 }

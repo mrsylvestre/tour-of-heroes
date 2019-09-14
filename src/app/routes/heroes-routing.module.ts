@@ -6,13 +6,10 @@ import { HeroesComponent } from '../heroes/heroes.component';
 // Pokemons module route's
 const heroesRoutes: Routes = [
   {
-    path: 'heroes',
+    path: 'heroes', component: HeroesComponent,
     // canActivate: [AuthGuard], // maybe put a guard in there for good mesure later
     children: [
-      { path: '', component: HeroesComponent },
-      // { path: 'all', component: ListPokemonsComponent },
-      // { path: 'edit/:id', component: EditPokemonComponent },
-      // { path: ':id', component: DetailPokemonComponent }
+      { path: ':name', component: HeroesComponent },
     ]
   }
 ];

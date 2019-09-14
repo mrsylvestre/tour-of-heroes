@@ -1,0 +1,20 @@
+<section class="container">
+  <div class="row">
+
+    <mat-table [dataSource]="heroes$ | async" class="mat-elevation-z8 col-12">
+
+      <ng-container *ngIf="heroes$ as heroes">
+
+        <ng-container *ngFor="let hero of heroes | keyvalue; index as i;" matColumnDef="{{ displayedColumns[i] }}">
+          <mat-header-cell mat-sort-header *matHeaderCellDef> {{ displayedColumns[i] }} </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{ element[displayedColumns[i]] }} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      </ng-container>
+
+    </mat-table>
+  </div>
+</section>
